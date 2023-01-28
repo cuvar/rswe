@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import styles from "./WidgetView.module.css";
+import "./WidgetView.css";
 import WidgetPlaceholder from "./WidgetPlaceholder";
 import { useEffect } from "react";
 import {
@@ -16,7 +16,6 @@ import { getScreenSize } from "./utils/size";
 import { calcPlaceholderPos, validateWidgetData } from "./utils/grid";
 
 interface IProps {
-  data: WidgetViewData;
   initialData: WidgetConfig[];
 }
 export default function WidgetView(props: IProps) {
@@ -49,10 +48,10 @@ export default function WidgetView(props: IProps) {
   return (
     // %docs: needs custom css due to size of a cell (100px)
     <div
-      className={`h-full grid ${styles["auto-rows"]} ${styles["sm-cols-3"]} ${styles["md-cols-6"]} ${styles["xl-cols-10"]} gap-4 sm:gap-6 `}
+      className={`h-full grid auto-rows sm-cols-3md-cols-6 xl-cols-10 gap-4 sm:gap-6 `}
       id={"panal-widgetview"}
     >
-      {widgetData.map((el) => {
+      {/* {widgetData.map((el) => {
         switch (el.name) {
           case "time":
             return <TimeWidget key={el.name} {...el} />;
@@ -71,7 +70,7 @@ export default function WidgetView(props: IProps) {
           default:
             break;
         }
-      })}
+      })} */}
 
       {placeholderPos.map((el) => (
         <WidgetPlaceholder key={el.colStart + "-" + el.rowStart} {...el} />
