@@ -37,9 +37,8 @@ const INITIAL_DATA: WidgetConfig[] = [
 export default function RSWE() {
   return (
     <div>
-      {/* <WidgetView initialData={INITIAL_DATA} /> */}
-      hello world form rswe
-      <div></div>
+      <div>hello world form rswe</div>
+      <WidgetView initialData={INITIAL_DATA} />
     </div>
   );
 }

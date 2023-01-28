@@ -9,7 +9,6 @@ import {
   columnAtom,
   placeholderPosAtom,
   widgetDataAtom,
-  errorAtom,
 } from "./utils/state";
 import { useAtom } from "jotai";
 import { getScreenSize } from "./utils/size";
@@ -23,14 +22,13 @@ export default function WidgetView(props: IProps) {
   const [columnCount, setColumnCount] = useAtom(columnAtom);
   const [placeholderPos, setPlaceholderPos] = useAtom(placeholderPosAtom);
   const [widgetData, setWidgetData] = useAtom(widgetDataAtom);
-  const [___, setGlobalError] = useAtom(errorAtom);
 
   useEffect(() => {
     try {
       const validatedData = validateWidgetData(props.initialData);
       setWidgetData(validatedData);
     } catch (error: any) {
-      setGlobalError(error.message);
+      throw new Error(error.message);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -39,6 +37,8 @@ export default function WidgetView(props: IProps) {
     if (typeof document === "undefined") return;
 
     const container = document.getElementById("panal-widgetview");
+    // todo: ?
+    // @ts-ignore
     setGridContainer(container);
     setColumnCount(getScreenSize().col);
     setPlaceholderPos(calcPlaceholderPos(widgetData, columnCount));
