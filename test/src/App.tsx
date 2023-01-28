@@ -6,7 +6,6 @@ function App() {
 
   return (
     <div className="w-screen h-screen bg-sky-700">
-      <div>Hello world</div>
       <RSWE />
     </div>
   );
