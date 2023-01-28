@@ -19,7 +19,7 @@
     "text",
     "typography"
   ],
-  "author": "Shu Ding <g@shud.in>",
+  "author": "cuvar <info@cuvar.dev>",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^18.11.13",

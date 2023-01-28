@@ -37,7 +37,9 @@ const INITIAL_DATA: WidgetConfig[] = [
 export default function Hello() {
   return (
     <div>
-      <WidgetView initialData={INITIAL_DATA} />
+      {/* <WidgetView initialData={INITIAL_DATA} /> */}
+      hello world
+      <div></div>
     </div>
   );
 }
