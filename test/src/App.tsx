@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import index from "dist";
+import RSWE from "rswe/dist";
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
         >
           Learn React
         </a>
+        <RSWE />
       </header>
     </div>
   );
