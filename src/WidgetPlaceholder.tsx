@@ -1,17 +1,20 @@
+"use client";
+
+import React from "react";
 import { useAtom } from "jotai";
 import {
   calcPlaceholderPos,
   getFreeCells,
   parseGridPosition,
   validateWidgetData,
-} from "../utils/grid";
+} from "./utils/grid";
 import {
   columnAtom,
   errorAtom,
   gridAtom,
   placeholderPosAtom,
   widgetDataAtom,
-} from "../utils/state";
+} from "./utils/state";
 
 interface IProps {
   colStart: number;
@@ -67,7 +70,7 @@ export default function WidgetPlaceholder(props: IProps) {
       const validatedData = validateWidgetData(newWidgetData);
       setWidgetData(validatedData);
     } catch (error: any) {
-      setGlobalError(error.message);
+      throw new Error(error.message);
     }
 
     // set placeholder to widget position

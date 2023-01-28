@@ -1,8 +1,7 @@
+"use client";
+
+import React from "react";
 import styles from "./WidgetView.module.css";
-import SearchWidget from "./SearchWidget";
-import TimeWidget from "./TimeWidget";
-import CalendarWidget from "./CalendarWidget";
-import LinkCollectionWidget from "./LinkWidget/LinkCollectionWidget";
 import WidgetPlaceholder from "./WidgetPlaceholder";
 import { useEffect } from "react";
 import {
@@ -11,10 +10,10 @@ import {
   placeholderPosAtom,
   widgetDataAtom,
   errorAtom,
-} from "../utils/state";
+} from "./utils/state";
 import { useAtom } from "jotai";
-import { getScreenSize } from "../utils/size";
-import { calcPlaceholderPos, validateWidgetData } from "../utils/grid";
+import { getScreenSize } from "./utils/size";
+import { calcPlaceholderPos, validateWidgetData } from "./utils/grid";
 
 interface IProps {
   data: WidgetViewData;

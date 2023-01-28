@@ -1,3 +1,7 @@
+"use client";
+
+import React from "react";
+
 interface IProps extends WidgetPos {
   children: React.ReactNode;
   idName?: string;

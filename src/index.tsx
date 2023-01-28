@@ -34,14 +34,10 @@ const INITIAL_DATA: WidgetConfig[] = [
   },
 ];
 
-const widgetData: WidgetViewData = {
-  calendarData: [],
-};
-
 export default function Hello() {
   return (
     <div>
-      <WidgetView data={widgetData} initialData={INITIAL_DATA} />
+      <WidgetView initialData={INITIAL_DATA} />
     </div>
   );
 }
