@@ -1,0 +1,82 @@
+import styles from "./WidgetView.module.css";
+import SearchWidget from "./SearchWidget";
+import TimeWidget from "./TimeWidget";
+import CalendarWidget from "./CalendarWidget";
+import LinkCollectionWidget from "./LinkWidget/LinkCollectionWidget";
+import WidgetPlaceholder from "./WidgetPlaceholder";
+import { useEffect } from "react";
+import {
+  gridAtom,
+  columnAtom,
+  placeholderPosAtom,
+  widgetDataAtom,
+  errorAtom,
+} from "../utils/state";
+import { useAtom } from "jotai";
+import { getScreenSize } from "../utils/size";
+import { calcPlaceholderPos, validateWidgetData } from "../utils/grid";
+
+interface IProps {
+  data: WidgetViewData;
+  initialData: WidgetConfig[];
+}
+export default function WidgetView(props: IProps) {
+  const [_, setGridContainer] = useAtom(gridAtom);
+  const [columnCount, setColumnCount] = useAtom(columnAtom);
+  const [placeholderPos, setPlaceholderPos] = useAtom(placeholderPosAtom);
+  const [widgetData, setWidgetData] = useAtom(widgetDataAtom);
+  const [___, setGlobalError] = useAtom(errorAtom);
+
+  useEffect(() => {
+    try {
+      const validatedData = validateWidgetData(props.initialData);
+      setWidgetData(validatedData);
+    } catch (error: any) {
+      setGlobalError(error.message);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+
+    const container = document.getElementById("panal-widgetview");
+    setGridContainer(container);
+    setColumnCount(getScreenSize().col);
+    setPlaceholderPos(calcPlaceholderPos(widgetData, columnCount));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [columnCount, widgetData]);
+
+  return (
+    // %docs: needs custom css due to size of a cell (100px)
+    <div
+      className={`h-full grid ${styles["auto-rows"]} ${styles["sm-cols-3"]} ${styles["md-cols-6"]} ${styles["xl-cols-10"]} gap-4 sm:gap-6 `}
+      id={"panal-widgetview"}
+    >
+      {widgetData.map((el) => {
+        switch (el.name) {
+          case "time":
+            return <TimeWidget key={el.name} {...el} />;
+          case "search":
+            return <SearchWidget key={el.name} {...el} />;
+          case "calendar":
+            return (
+              <CalendarWidget
+                calendarData={props.data.calendarData}
+                key={el.name}
+                {...el}
+              />
+            );
+          case "link":
+            return <LinkCollectionWidget key={el.name} {...el} />;
+          default:
+            break;
+        }
+      })}
+
+      {placeholderPos.map((el) => (
+        <WidgetPlaceholder key={el.colStart + "-" + el.rowStart} {...el} />
+      ))}
+    </div>
+  );
+}
