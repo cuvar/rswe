@@ -1,9 +1,6 @@
-import { useState } from "react";
-import RSWE from "rswe/dist";
+import RSWE from "rswe";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <div className="w-screen h-screen bg-sky-700">
       <RSWE />

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import "./index.css";
 import WidgetView from "./WidgetView";
 
 const INITIAL_DATA: WidgetConfig[] = [
@@ -37,8 +38,8 @@ const INITIAL_DATA: WidgetConfig[] = [
 export default function RSWE() {
   return (
     <div>
-      <div>hello world form rswe</div>
-      <WidgetView initialData={INITIAL_DATA} />
+      <div className="text-red-500">hello world form rswe</div>
+      {/* <WidgetView initialData={INITIAL_DATA} /> */}
     </div>
   );
 }
