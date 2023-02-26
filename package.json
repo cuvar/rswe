@@ -20,8 +20,9 @@
     "clean": "rm -rf ./dist",
     "build": "npm run clean && parcel build",
     "dev": "parcel watch src/index.tsx",
+    "prepack": "npm run build",
     "semantic-release": "semantic-release",
-    "prepack": "npm run build"
+    "test": "echo \" no tests are currently setup\""
   },
   "release": {
     "branches": [
