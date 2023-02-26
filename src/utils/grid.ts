@@ -1,3 +1,10 @@
+import {
+  CellPosWithNode,
+  ColumnPerScreen,
+  PlaceholderPos,
+  WidgetConfig,
+} from "./types";
+
 function getFreeCells(gridContainer: HTMLElement): CellPosWithNode[] {
   const placeholder = gridContainer?.querySelectorAll(".panal-placeholder");
   const freeCells: CellPosWithNode[] = Array.from(placeholder).map((el) =>

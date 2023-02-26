@@ -1,3 +1,5 @@
+import { ColumnPerScreen } from "./types";
+
 const SCREEN_SIZE = Object.freeze({
   SM: 640, // 3
   MD: 768, // 6

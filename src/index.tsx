@@ -2,6 +2,7 @@
 
 import React from "react";
 import "./index.css";
+import { WidgetConfig } from "./utils/types";
 import WidgetView from "./WidgetView";
 
 const INITIAL_DATA: WidgetConfig[] = [

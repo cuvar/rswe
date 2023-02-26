@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { WidgetPos } from "./utils/types";
 
 interface IProps extends WidgetPos {
   children: React.ReactNode;

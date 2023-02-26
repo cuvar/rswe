@@ -14,6 +14,7 @@ import {
   placeholderPosAtom,
   widgetDataAtom,
 } from "./utils/state";
+import { CellPosWithNode, WidgetPos } from "./utils/types";
 
 interface IProps {
   colStart: number;

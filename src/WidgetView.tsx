@@ -13,6 +13,7 @@ import {
 import { useAtom } from "jotai";
 import { getScreenSize } from "./utils/size";
 import { calcPlaceholderPos, validateWidgetData } from "./utils/grid";
+import { WidgetConfig } from "./utils/types";
 
 interface IProps {
   initialData: WidgetConfig[];
