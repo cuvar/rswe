@@ -1,47 +1,23 @@
-interface LinkData {
-  text: string;
-  href: string;
-  tab: "new" | "same";
-}
-
-// data that needs to be passed to the WidgetView component -> all data for all widgets
-interface WidgetViewData {
-  calendarData: CalendarData[][];
-}
-
-interface SearchEngineData {
-  key: "google" | "duckduckgo" | "ecosia" | "gdrive";
-  displayName: string;
-  url: string;
-}
-
-interface CalendarData {
-  title: string;
-  start: Date;
-  end: Date;
-  duration: number;
-}
-
-type ColumnPerScreen =
+export declare type ColumnPerScreen =
   | { size: "xs"; col: 3 }
   | { size: "sm"; col: 3 }
   | { size: "md"; col: 6 }
   | { size: "lg"; col: 6 }
   | { size: "xl"; col: 10 };
 
-type WidgetType = "link" | "search" | "calendar" | "time";
-interface WidgetConfig extends WidgetPos {
+export declare type WidgetType = "link" | "search" | "calendar" | "time";
+export declare interface WidgetConfig extends WidgetPos {
   name: WidgetType;
 }
-interface WidgetPos {
+export declare interface WidgetPos {
   colStart: number;
   rowStart: number;
   colSpan: number;
   rowSpan: number;
 }
 
-interface CellPosWithNode extends WidgetPos {
+export declare interface CellPosWithNode extends WidgetPos {
   node: Element;
 }
 
-type PlaceholderPos = Pick<WidgetPos, "colStart" | "rowStart">;
+export declare type PlaceholderPos = Pick<WidgetPos, "colStart" | "rowStart">;

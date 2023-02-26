@@ -1,30 +1,69 @@
 {
   "name": "rswe",
-  "version": "0.0.1",
+  "version": "0.0.0-development",
   "description": "simple widget engine for react",
   "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/index.mjs"
+      }
+    }
+  },
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist/**/*"
   ],
   "scripts": {
-    "build": "tsup src/index.tsx",
-    "dev": "tsup src/index.tsx --watch",
-    "dev:website": "turbo run dev --filter=website..."
+    "clean": "rm -rf ./dist",
+    "build": "npm run clean && parcel build",
+    "dev": "parcel watch src/index.tsx",
+    "prepack": "npm run build",
+    "semantic-release": "semantic-release",
+    "test": "echo \" no tests are currently setup\""
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cuvar/rswe.git"
   },
   "keywords": [
+    "npm",
+    "javascript",
+    "typescript",
+    "commonjs",
+    "ecmascript",
     "react",
-    "wrapping",
-    "text",
-    "typography"
+    "widget",
+    "engine"
   ],
-  "author": "cuvar <info@cuvar.dev>",
+  "author": "cuvar <luca@cuvar.dev>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cuvar/rswe/issues"
+  },
+  "homepage": "https://github.com/cuvar/rswe#readme",
   "devDependencies": {
+    "@parcel/packager-ts": "^2.8.3",
+    "@parcel/transformer-typescript-types": "^2.8.3",
     "@types/node": "^18.11.13",
     "@types/react": "^18.0.26",
+    "autoprefixer": "^10.4.13",
+    "parcel": "^2.8.3",
+    "postcss": "^8.4.21",
     "react": "^18.2.0",
+    "semantic-release": "^19.0.3",
+    "tailwindcss": "^3.2.6",
+    "ts-node": "^10.9.1",
     "tsup": "^6.4.0",
     "turbo": "^1.6.3",
     "typescript": "^4.8.4"

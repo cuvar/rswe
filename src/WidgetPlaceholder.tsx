@@ -10,11 +10,11 @@ import {
 } from "./utils/grid";
 import {
   columnAtom,
-  errorAtom,
   gridAtom,
   placeholderPosAtom,
   widgetDataAtom,
 } from "./utils/state";
+import { CellPosWithNode, WidgetPos } from "./utils/types";
 
 interface IProps {
   colStart: number;
@@ -26,7 +26,6 @@ export default function WidgetPlaceholder(props: IProps) {
   const [_, setPlaceholderPos] = useAtom(placeholderPosAtom);
   const [widgetData, setWidgetData] = useAtom(widgetDataAtom);
   const [columnCount, __] = useAtom(columnAtom);
-  const [___, setGlobalError] = useAtom(errorAtom);
 
   function handleDrop(e: any) {
     const widgetProps: WidgetPos & { id: string } = JSON.parse(
